@@ -260,9 +260,7 @@ This shows that living area is useful, but it cannot fully explain house prices 
 | RMSE | 61,815.73 |
 
 The simple linear regression model explained about **52.3%** of the variation in sale price.
-
 This is a reasonable result for a model using only one predictor. However, the average prediction error was still high. On average, the model's predictions differed from actual sale prices by about **41 366**.
-
 This suggested that additional property features were needed.
 
 # Multiple Linear Regression
@@ -275,8 +273,6 @@ price ~ area + bedrooms + total_rooms + year_built + overall_quality
 
 This model allows sale price to be estimated using not only size, but also quality, construction year, and room-related characteristics.
 
----
-
 ## Model Coefficients
 
 | Feature | Coefficient |
@@ -287,14 +283,11 @@ This model allows sale price to be estimated using not only size, but also quali
 | `total_rooms` | -741.81 |
 | `bedrooms` | -10,792.26 |
 
-`overall_quality` had the largest positive coefficient.
+**overall_quality** had the largest positive coefficient.
 
-According to the model, increasing the quality rating by one point was associated with an increase of about **23,305** in predicted sale price, assuming the other variables stayed the same.
+According to the model, increasing the quality rating by one point was associated with an increase of about **23,305** in predicted sale price, assuming the other variables stayed the same. Living area also remained positive. After accounting for quality, year built, rooms, and bedrooms, each additional square foot was associated with an increase of about **75.88** in predicted sale price.
 
-Living area also remained positive. After accounting for quality, year built, rooms, and bedrooms, each additional square foot was associated with an increase of about **75.88** in predicted sale price.
-
-The negative coefficients for `bedrooms` and `total_rooms` should be interpreted carefully. They do not mean that rooms directly reduce property value.
-
+**The negative coefficients for bedrooms and total_rooms should be interpreted carefully.** They do not mean that rooms directly reduce property value.
 These variables are related to living area and to each other, so their coefficients can change when they are included in the same model. This is why regression coefficients should be interpreted in context, not as simple standalone relationships.
 
 ---
@@ -308,12 +301,8 @@ These variables are related to living area and to each other, so their coefficie
 | RMSE | 43,213.59 |
 
 The multiple linear regression model explained about **76.7%** of the variation in sale price.
-
 The average prediction error decreased to approximately **28,322**, which means the model performed noticeably better after adding more property features.
-
 This confirms that housing prices are influenced by more than living area alone.
-
----
 
 # Model Comparison
 
@@ -323,7 +312,6 @@ This confirms that housing prices are influenced by more than living area alone.
 | Multiple Linear Regression | 0.767 | 28,322.21 | 43,213.59 |
 
 Adding more property features improved the model substantially.
-
 The simple model explained **52.3%** of sale price variation, while the multiple regression model explained **76.7%**.
 
 Prediction error also decreased:
@@ -332,8 +320,6 @@ Prediction error also decreased:
 - RMSE decreased from about **61,816** to **43,214**.
 
 This shows that property price is not driven by living area alone. Overall quality, year built, and other property characteristics add important information.
-
----
 
 # Model Diagnostics
 
@@ -348,14 +334,10 @@ This shows that property price is not driven by living area alone. Overall quali
 </p>
 
 The actual vs predicted plot shows that the multiple regression model performs reasonably well for lower and mid-range properties.
-
 Most points are located close to the diagonal line, meaning that predicted prices are often fairly close to actual sale prices.
-
 However, the model is less accurate for more expensive properties. For higher actual sale prices, many points fall below the diagonal line. This means that the model tends to underestimate expensive homes.
 
 This suggests that the selected numerical features explain a large part of price variation, but they are still not enough to fully capture what makes some properties significantly more expensive.
-
----
 
 ## Residual Analysis
 
@@ -367,40 +349,24 @@ This suggests that the selected numerical features explain a large part of price
   <i><b>Figure 9.</b> Residuals are mostly centered around zero for typical properties, but errors become larger for more expensive or less typical homes.</i>
 </p>
 
-The residual plot shows that prediction errors are not perfectly random.
-
-For lower and mid-range predicted prices, residuals are mostly concentrated around zero. This suggests that the model works reasonably well for typical properties.
-
+The residual plot shows that prediction errors are not perfectly random. For lower and mid-range predicted prices, residuals are mostly concentrated around zero. This suggests that the model works reasonably well for typical properties.
 For higher predicted prices, the spread of residuals becomes larger. This means that the model makes bigger errors for more expensive or less typical homes.
-
 There is also at least one strong negative residual, where the model overestimated the sale price by a large amount.
 
 Overall, the residual plot confirms that the multiple regression model is useful, but still simplified. Housing prices are influenced by additional factors that are not included in this version of the model.
 
----
-
 # Main Conclusions
 
 This project showed that housing prices are influenced by multiple property characteristics, not only living area.
-
 The exploratory analysis showed that both sale price and living area are right-skewed. Most homes are concentrated in moderate price and size ranges, while a smaller number of expensive or very large properties extend the upper tail of the distributions.
 
-Correlation analysis showed that `overall_quality` and `area` had the strongest relationships with sale price among the selected variables. Overall quality had the strongest correlation with price, suggesting that the standard of materials and finish is especially important.
+Correlation analysis showed that **overall_quality** and **area** had the strongest relationships with sale price among the selected variables. Overall quality had the strongest correlation with price, suggesting that the standard of materials and finish is especially important.
 
 The simple linear regression model using only living area explained about **52.3%** of sale price variation.
-
 After adding overall quality, year built, total rooms, and bedrooms, the multiple regression model explained about **76.7%** of sale price variation.
-
 The model comparison confirmed that adding more property features improved prediction quality. However, residual analysis showed that the model still made larger errors for some expensive or unusual properties.
 
-A more complete housing price model would likely benefit from additional variables such as:
-
-- neighborhood,
-- property condition,
-- garage quality,
-- basement features,
-- lot characteristics,
-- other categorical property attributes.
+A more complete housing price model would likely benefit from additional variables such as: neighborhood, property condition, garage quality, basement features, lot characteristics, other categorical property attributes.
 
 ## Skills Demonstrated
 
