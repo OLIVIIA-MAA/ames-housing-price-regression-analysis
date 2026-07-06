@@ -3,9 +3,7 @@
 ## Project Overview
 
 This project analyzes housing prices using the Ames Housing dataset.
-
 The goal of the analysis was to understand which property characteristics are most strongly related to sale price and to check how well selected numerical features can predict house prices.
-
 I started with exploratory data analysis to understand how prices, living area, and quality ratings are distributed. Then I analyzed relationships between variables, checked correlations, and built two regression models:
 
 - a simple linear regression model using only living area,
@@ -13,12 +11,9 @@ I started with exploratory data analysis to understand how prices, living area, 
 
 The purpose of this project was not only to build a model, but also to understand what the model tells us, which variables matter most, and where the model still has limitations.
 
----
-
 ## Dataset
 
 The dataset contains **2,930 residential property records** and **82 variables** describing different aspects of each property.
-
 For this project, I focused on selected numerical variables that are easy to interpret and suitable for regression modeling.
 
 | Variable | Description |
@@ -34,7 +29,32 @@ The target variable in this analysis is `price`.
 
 The selected explanatory variables describe basic property characteristics such as size, number of rooms, construction year, and quality.
 
----
+## Repository Structure
+
+```text
+ames-housing-price-regression-analysis/
+│
+├── data/
+│   └── ames.csv
+│
+├── obrazy/
+│   ├── price_distribution.png
+│   ├── living_area_distribution.png
+│   ├── overall_quality_distribution.png
+│   ├── price_vs_living_area.png
+│   ├── price_by_quality.png
+│   ├── correlation_matrix.png
+│   ├── simple_regression_line.png
+│   ├── actual_vs_predicted.png
+│   └── residual_plot.png
+│
+├── notebooks/
+│   └── housing_price_regression_analysis.ipynb
+│
+├── README.md
+├── requirements.txt
+└── LICENSE
+```
 
 ## Analytical Questions
 
@@ -46,8 +66,6 @@ The analysis was guided by a few practical questions:
 - Can a regression model estimate house prices with reasonable accuracy?
 - Where does the model perform well, and where does it still make larger errors?
 
----
-
 ## Tools and Libraries
 
 The project was completed in Python using:
@@ -57,12 +75,9 @@ The project was completed in Python using:
 - `matplotlib` and `seaborn` for visualization,
 - `scikit-learn` for regression modeling and model evaluation.
 
----
-
 ## Analysis Workflow
 
 The project follows a structured analysis process:
-
 1. Load and inspect the dataset.
 2. Select and rename key variables.
 3. Check data quality.
@@ -75,17 +90,11 @@ The project follows a structured analysis process:
 10. Analyze prediction errors.
 11. Summarize key conclusions.
 
----
-
 ## Data Quality Check
 
 The selected variables did not contain missing values, so no imputation or row removal was needed for this part of the analysis.
-
 The simplified working dataset contained **11 repeated rows** based only on the selected variables. I did not remove them automatically because repeated combinations may still represent different properties in the original dataset.
-
 In housing data, it is possible for multiple homes to have the same sale price, living area, number of rooms, year built, and quality rating. Removing such rows without checking the full original record could lead to deleting valid observations.
-
----
 
 ## Summary Statistics
 
@@ -98,7 +107,6 @@ In housing data, it is possible for multiple homes to have the same sale price, 
 | Max | 755,000 | 5,642 | 8 | 15 | 2010 | 10 |
 
 The average sale price is higher than the median sale price, which already suggests that the price distribution is right-skewed.
-
 This is common in housing data. Most homes are sold in moderate price ranges, while a smaller number of expensive properties pulls the average upward.
 
 ---
@@ -115,15 +123,10 @@ This is common in housing data. Most homes are sold in moderate price ranges, wh
   <i><b>Figure 1.</b> Sale prices are right-skewed, with most properties concentrated in lower and mid-range price levels.</i>
 </p>
 
-The sale price distribution is clearly right-skewed.
-
-Most properties are concentrated in the lower and middle price ranges, mainly between approximately **100,000 and 250,000**. There are fewer expensive properties, but they extend the distribution far to the right, with some homes priced above **500,000**.
-
+The sale price distribution is clearly right-skewed. Most properties are concentrated in the lower and middle price ranges, mainly between approximately 100 000 and 250 000. There are fewer expensive properties, but they extend the distribution far to the right, with some homes priced above 500 000.
 This explains why the mean sale price is higher than the median.
 
 This pattern matters for modeling because expensive or unusual properties may be harder to predict accurately using only basic numerical features.
-
----
 
 ## Living Area Distribution
 
@@ -135,15 +138,8 @@ This pattern matters for modeling because expensive or unusual properties may be
   <i><b>Figure 2.</b> Most properties have a typical living area between approximately 1,000 and 2,000 square feet, while a few much larger homes extend the distribution to the right.</i>
 </p>
 
-Living area is also right-skewed.
-
-Most properties have a living area between approximately **1,000 and 2,000 square feet**, which is consistent with the median value of **1,442**.
-
-There are also several much larger homes, including properties above **3,000 square feet** and a few observations above **5,000 square feet**.
-
+Living area is also right-skewed. Most properties have a living area between approximately 1 000 and 2 000 square feet, which is consistent with the median value of 1 442. There are also several much larger homes, including properties above 3 000 square feet and a few observations above 5 000 square feet.
 These larger properties are important because they may strongly influence the regression model, especially if their prices do not follow the same pattern as typical homes.
-
----
 
 ## Overall Quality Distribution
 
@@ -155,15 +151,8 @@ These larger properties are important because they may strongly influence the re
   <i><b>Figure 3.</b> Most properties are rated between 5 and 7 in overall quality, meaning the dataset is mainly composed of average to above-average quality homes.</i>
 </p>
 
-Most properties are rated between **5 and 7** in overall quality, with rating **5** being the most common.
-
-Very low quality ratings, such as **1–3**, are rare. Very high quality ratings, especially **9–10**, are also much less common.
-
-This means the dataset mostly contains average to above-average quality homes.
-
+Most properties are rated between 5 and 7 in overall quality, with rating **5** being the most common. Very low quality ratings, such as 1–3, are rare. Very high quality ratings, especially 9–10, are also much less common. This means the dataset mostly contains average to above-average quality homes.
 This variable is important because quality describes something that living area alone cannot capture: the standard of materials and finish.
-
----
 
 ## Sale Price vs Living Area
 
@@ -175,15 +164,8 @@ This variable is important because quality describes something that living area 
   <i><b>Figure 4.</b> Larger properties generally sell for higher prices, but homes with similar living area can still have very different sale prices.</i>
 </p>
 
-The scatter plot shows a clear positive relationship between living area and sale price.
-
-In general, larger properties tend to sell for higher prices. However, the relationship is not perfect. Houses with similar living area can still have very different sale prices.
-
-This suggests that size is important, but it is not the only factor influencing property value.
-
+The scatter plot shows a clear positive relationship between living area and sale price. In general, larger properties tend to sell for higher prices. However, the relationship is not perfect. Houses with similar living area can still have very different sale prices. This suggests that size is important, but it is not the only factor influencing property value.
 There are also a few unusual observations with very large living area but relatively low sale price. These points may affect the simple linear regression model and should be kept in mind when interpreting its results.
-
----
 
 ## Sale Price by Overall Quality
 
@@ -196,14 +178,10 @@ There are also a few unusual observations with very large living area but relati
 </p>
 
 Sale price increases clearly with overall quality.
-
 Properties rated **8, 9, and 10** have much higher median prices than properties with average or low quality ratings.
-
 The difference between quality groups is stronger and more consistent than the pattern visible for living area alone. This suggests that overall quality is one of the most important variables for explaining sale price in this dataset.
 
 There are still outliers within several quality groups, which means that quality matters, but it does not explain the full price variation by itself.
-
----
 
 # Correlation Analysis
 
@@ -217,17 +195,9 @@ There are still outliers within several quality groups, which means that quality
 
 Correlation analysis confirmed the patterns visible in the charts.
 
-The strongest correlation with sale price was observed for `overall_quality`:
+**The strongest correlation with sale price was observed for overall_quality, r = 0.799**
 
-```text
-r = 0.799
-```
-
-Living area also had a strong positive relationship with sale price:
-
-```text
-r = 0.707
-```
+**Living area also had a strong positive relationship with sale price r = 0.707**
 
 Other selected variables showed weaker or moderate relationships with price.
 
@@ -239,17 +209,12 @@ Other selected variables showed weaker or moderate relationships with price.
 | `total_rooms` | 0.495 |
 | `bedrooms` | 0.144 |
 
-The results suggest that `overall_quality` and `area` are the strongest individual predictors of sale price among the selected variables.
+The results suggest that **overall_quality** and **area** are the strongest individual predictors of sale price among the selected variables.
 
-It is also important to notice that some predictors are correlated with each other. For example, living area and total rooms have a strong correlation:
-
-```text
-r = 0.808
-```
+It is also important to notice that some predictors are correlated with each other. 
+For example, **living area and total rooms have a strong correlation r = 0.808**
 
 This makes sense because larger houses usually have more rooms. However, it also means that these variables may partly carry overlapping information in a regression model.
-
----
 
 # Simple Linear Regression
 
@@ -283,12 +248,8 @@ The intercept should not be interpreted literally because a property with zero l
 </p>
 
 The regression line confirms the positive relationship between living area and sale price.
-
 As living area increases, predicted sale price also increases. However, the points are not evenly concentrated around the line, especially for larger properties.
-
 This shows that living area is useful, but it cannot fully explain house prices by itself.
-
----
 
 ## Simple Model Performance
 
@@ -300,11 +261,9 @@ This shows that living area is useful, but it cannot fully explain house prices 
 
 The simple linear regression model explained about **52.3%** of the variation in sale price.
 
-This is a reasonable result for a model using only one predictor. However, the average prediction error was still high. On average, the model's predictions differed from actual sale prices by about **41,366**.
+This is a reasonable result for a model using only one predictor. However, the average prediction error was still high. On average, the model's predictions differed from actual sale prices by about **41 366**.
 
 This suggested that additional property features were needed.
-
----
 
 # Multiple Linear Regression
 
@@ -443,8 +402,6 @@ A more complete housing price model would likely benefit from additional variabl
 - lot characteristics,
 - other categorical property attributes.
 
----
-
 ## Skills Demonstrated
 
 This project demonstrates practical data analysis skills, including:
@@ -461,54 +418,3 @@ This project demonstrates practical data analysis skills, including:
 - residual analysis,
 - interpretation of results,
 - communicating analytical findings clearly.
-
----
-
-## Repository Structure
-
-```text
-ames-housing-price-regression-analysis/
-│
-├── data/
-│   └── ames.csv
-│
-├── obrazy/
-│   ├── price_distribution.png
-│   ├── living_area_distribution.png
-│   ├── overall_quality_distribution.png
-│   ├── price_vs_living_area.png
-│   ├── price_by_quality.png
-│   ├── correlation_matrix.png
-│   ├── simple_regression_line.png
-│   ├── actual_vs_predicted.png
-│   └── residual_plot.png
-│
-├── notebooks/
-│   └── housing_price_regression_analysis.ipynb
-│
-├── README.md
-├── requirements.txt
-└── LICENSE
-```
-
----
-
-## How to Run the Project
-
-Clone the repository:
-
-```bash
-git clone <repository-link>
-```
-
-Install required libraries:
-
-```bash
-pip install -r requirements.txt
-```
-
-Open the notebook:
-
-```bash
-jupyter notebook notebooks/housing_price_regression_analysis.ipynb
-```
