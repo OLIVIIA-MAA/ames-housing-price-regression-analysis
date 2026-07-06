@@ -1,4 +1,4 @@
-# Ames Housing Price Regression Analysis
+# Housing Price Drivers and Regression Analysis
 
 ## Project Overview
 
