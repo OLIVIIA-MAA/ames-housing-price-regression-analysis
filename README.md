@@ -107,7 +107,13 @@ This is common in housing data. Most homes are sold in moderate price ranges, wh
 
 ## Sale Price Distribution
 
-![Distribution of Sale Price](obrazy/price_distribution.png)
+<p align="center">
+  <img src="assets/price_distribution.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 1.</b> Sale prices are right-skewed, with most properties concentrated in lower and mid-range price levels.</i>
+</p>
 
 The sale price distribution is clearly right-skewed.
 
@@ -121,7 +127,13 @@ This pattern matters for modeling because expensive or unusual properties may be
 
 ## Living Area Distribution
 
-![Distribution of Living Area](obrazy/living_area_distribution.png)
+<p align="center">
+  <img src="assets/living_area_distribution.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 2.</b> Most properties have a typical living area between approximately 1,000 and 2,000 square feet, while a few much larger homes extend the distribution to the right.</i>
+</p>
 
 Living area is also right-skewed.
 
@@ -135,7 +147,13 @@ These larger properties are important because they may strongly influence the re
 
 ## Overall Quality Distribution
 
-![Distribution of Overall Quality](obrazy/overall_quality_distribution.png)
+<p align="center">
+  <img src="assets/overall_quality_distribution.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 3.</b> Most properties are rated between 5 and 7 in overall quality, meaning the dataset is mainly composed of average to above-average quality homes.</i>
+</p>
 
 Most properties are rated between **5 and 7** in overall quality, with rating **5** being the most common.
 
@@ -149,7 +167,13 @@ This variable is important because quality describes something that living area 
 
 ## Sale Price vs Living Area
 
-![Sale Price vs Living Area](obrazy/price_vs_living_area.png)
+<p align="center">
+  <img src="assets/price_vs_living_area.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 4.</b> Larger properties generally sell for higher prices, but homes with similar living area can still have very different sale prices.</i>
+</p>
 
 The scatter plot shows a clear positive relationship between living area and sale price.
 
@@ -163,7 +187,13 @@ There are also a few unusual observations with very large living area but relati
 
 ## Sale Price by Overall Quality
 
-![Sale Price by Overall Quality](obrazy/price_by_quality.png)
+<p align="center">
+  <img src="assets/price_by_quality.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 5.</b> Sale price increases clearly with overall quality, especially for properties rated 8, 9, and 10.</i>
+</p>
 
 Sale price increases clearly with overall quality.
 
@@ -177,7 +207,13 @@ There are still outliers within several quality groups, which means that quality
 
 # Correlation Analysis
 
-![Correlation Matrix](obrazy/correlation_matrix.png)
+<p align="center">
+  <img src="assets/correlation_matrix.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 6.</b> Overall quality and living area have the strongest correlations with sale price among the selected numerical features.</i>
+</p>
 
 Correlation analysis confirmed the patterns visible in the charts.
 
@@ -238,7 +274,13 @@ The coefficient means that the model estimates an increase of about **106.73** i
 
 The intercept should not be interpreted literally because a property with zero living area is not realistic. In this model, the intercept mainly helps position the regression line.
 
-![Simple Linear Regression Line](obrazy/simple_regression_line.png)
+<p align="center">
+  <img src="assets/simple_regression_line.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 7.</b> The simple linear regression model confirms a positive relationship between living area and sale price, but the spread of points shows that area alone does not fully explain property value.</i>
+</p>
 
 The regression line confirms the positive relationship between living area and sale price.
 
@@ -338,7 +380,13 @@ This shows that property price is not driven by living area alone. Overall quali
 
 ## Actual vs Predicted Sale Prices
 
-![Actual vs Predicted Sale Prices](obrazy/actual_vs_predicted.png)
+<p align="center">
+  <img src="assets/actual_vs_predicted.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 8.</b> The multiple regression model performs reasonably well for lower and mid-range properties, but it tends to underestimate more expensive homes.</i>
+</p>
 
 The actual vs predicted plot shows that the multiple regression model performs reasonably well for lower and mid-range properties.
 
@@ -352,7 +400,13 @@ This suggests that the selected numerical features explain a large part of price
 
 ## Residual Analysis
 
-![Residual Plot](obrazy/residual_plot.png)
+<p align="center">
+  <img src="assets/residual_plot.png" width="900">
+</p>
+
+<p align="center">
+  <i><b>Figure 9.</b> Residuals are mostly centered around zero for typical properties, but errors become larger for more expensive or less typical homes.</i>
+</p>
 
 The residual plot shows that prediction errors are not perfectly random.
 
